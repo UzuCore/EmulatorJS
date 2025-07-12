@@ -4803,7 +4803,7 @@ class EmulatorJS {
             }, this.config.threads ? "enabled" : "disabled", home);
         }
 
-        const graphicsOptions = createSettingParent(true, localization("Graphics Settings"), home);
+        const graphicsOptions = createSettingParent(true, this.localization("Graphics Settings"), home);
 
         if (this.config.shaders) {
             const builtinShaders = {
@@ -4859,7 +4859,7 @@ class EmulatorJS {
             "3": "270 deg"
         }, this.videoRotation.toString(), graphicsOptions, true);
 
-        const screenCaptureOptions = createSettingParent(true, localization("Screen Capture"), home);
+        const screenCaptureOptions = createSettingParent(true, this.localization("Screen Capture"), home);
 
         addToMenu(this.localization("Screenshot Source"), "screenshotSource", {
             "canvas": "canvas",
@@ -4955,7 +4955,7 @@ class EmulatorJS {
 
         checkForEmptyMenu(screenCaptureOptions);
 
-        const speedOptions = createSettingParent(true, localization("Speed Options"), home);
+        const speedOptions = createSettingParent(true, this.localization("Speed Options"), home);
 
         addToMenu(this.localization("Fast Forward"), "fastForward", {
             "enabled": this.localization("Enabled"),
@@ -4986,7 +4986,7 @@ class EmulatorJS {
             ], "6", speedOptions, true);
         }
 
-        const inputOptions = createSettingParent(true, localization("Input Options"), home);
+        const inputOptions = createSettingParent(true, this.localization("Input Options"), home);
 
         addToMenu(this.localization("Menubar Mouse Trigger"), "menubarBehavior", {
             "downward": this.localization("Downward Movement"),
@@ -5011,7 +5011,7 @@ class EmulatorJS {
         checkForEmptyMenu(inputOptions);
 
         if (this.saveInBrowserSupported()) {
-            const saveStateOpts = createSettingParent(true, localization("Save States"), home);
+            const saveStateOpts = createSettingParent(true, this.localization("Save States"), home);
             addToMenu(this.localization("Save State Slot"), "save-state-slot", ["1", "2", "3", "4", "5", "6", "7", "8", "9"], "1", saveStateOpts, true);
             addToMenu(this.localization("Save State Location"), "save-state-location", {
                 "download": this.localization("Download"),
@@ -5030,7 +5030,7 @@ class EmulatorJS {
         }
 
         if (this.touch || this.hasTouchScreen) {
-            const virtualGamepad = createSettingParent(true, "Virtual Gamepad", home);
+            const virtualGamepad = createSettingParent(true, this.localization("Virtual Gamepad"), home);
             addToMenu(this.localization("Virtual Gamepad"), "virtual-gamepad", {
                 "enabled": this.localization("Enabled"),
                 "disabled": this.localization("Disabled")
@@ -5051,7 +5051,7 @@ class EmulatorJS {
             coreOpts = this.gameManager.getCoreOptions();
         } catch(e) {}
         if (coreOpts) {
-            const coreOptions = createSettingParent(true, localization("Backend Core Options"), home);
+            const coreOptions = createSettingParent(true, this.localization("Backend Core Options"), home);
             coreOpts.split("\n").forEach((line, index) => {
                 let option = line.split("; ");
                 let name = option[0];
